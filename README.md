@@ -5,7 +5,7 @@ i9n is an easy and powerful golang module make your i18n work twice faster, name
 ## feature
 
 - no need write i18n resource files, use `i9n.Printf` and generate them by one command.
-- support gozero, gin out of box, other frameworks by plugins
+- support [go-zero](https://github.com/tal-tech/go-zero), [gin](https://github.com/gin-gonic/gin.git) out of box, other frameworks by plugins
 
 ## thanks
 
