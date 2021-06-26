@@ -1,0 +1,10 @@
+{
+    "language": "el",
+    "messages": [
+        {
+            "id": "Hello world!",
+            "message": "Hello world!",
+            "translation": "Γιά σου Κόσμε!"
+        }
+    ]
+}
