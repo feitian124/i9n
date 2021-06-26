@@ -20,6 +20,7 @@ hi, customer. 1 apple or 2 apples?
 ## thanks
 
 - <https://xuanwo.io/2019/12/11/golang-i18n/>
+- https://phrase.com/blog/posts/internationalization-i18n-go/
 - <https://github.com/nicksnyder/go-i18n>
 - <https://github.com/kataras/i18n>
 - <https://github.com/maximilien/i18n4go>
