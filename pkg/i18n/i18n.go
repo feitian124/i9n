@@ -1,6 +1,7 @@
 package i18n
 
 import (
+	"github.com/Xuanwo/go-locale"
 	"io"
 
 	"golang.org/x/text/language"
@@ -9,61 +10,18 @@ import (
 
 var p *message.Printer
 
-func newMatcher(t []language.Tag) *matcher {
-	tags := &matcher{make(map[language.Tag]int)}
-	for i, tag := range t {
-		ct, err := language.All.Canonicalize(tag)
-		if err != nil {
-			ct = tag
-		}
-		tags.index[ct] = i
-	}
-	return tags
-}
-
-type matcher struct {
-	index map[language.Tag]int
-}
-
-func (m matcher) Match(want ...language.Tag) (language.Tag, int, language.Confidence) {
-	for _, t := range want {
-		ct, err := language.All.Canonicalize(t)
-		if err != nil {
-			ct = t
-		}
-		conf := language.Exact
-		for {
-			if index, ok := m.index[ct]; ok {
-				return ct, index, conf
-			}
-			if ct == language.Und {
-				break
-			}
-			ct = ct.Parent()
-			conf = language.High
-		}
-	}
-	return language.Und, 0, language.No
-}
-
-var supported = newMatcher([]language.Tag{
-	language.AmericanEnglish,
-	language.English,
-	language.SimplifiedChinese,
-	language.Chinese,
-})
-
 // Init will init i18n support via input language.
-func Init(lang language.Tag) {
-	tag, _, _ := supported.Match(lang)
+func Init(userPrefs ...language.Tag) {
+	tag, _, _ := matcher.Match(userPrefs...)
 	switch tag {
 	case language.AmericanEnglish, language.English:
-		initEnUS(lang)
+		initEnUS(tag)
 	case language.SimplifiedChinese, language.Chinese:
-		initZhCN(lang)
+		initZhCN(tag)
 	default:
-		initEnUS(lang)
+		initEnUS(tag)
 	}
+	p = message.NewPrinter(tag)
 }
 
 // Fprintf is like fmt.Fprintf, but using language-specific formatting.
@@ -86,16 +44,10 @@ func Sprint(a ...interface{}) string {
 	return p.Sprint(a...)
 }
 
-//func init() {
-//	tag, err := locale.Detect()
-//	if err != nil {
-//		tag = language.AmericanEnglish
-//	}
-//	Init(tag)
-//	p = message.NewPrinter(tag)
-//}
-
-func Init2(tag language.Tag) {
+func init() {
+	tag, err := locale.Detect()
+	if err != nil {
+		tag = language.AmericanEnglish
+	}
 	Init(tag)
-	p = message.NewPrinter(tag)
 }

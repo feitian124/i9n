@@ -13,9 +13,9 @@ func main() {
 	var lang = flag.String("l", "", "language: en, ch")
 	flag.Parse()
 	if *lang == "ch" {
-		i18n.Init2(language.SimplifiedChinese)
+		i18n.Init(language.SimplifiedChinese)
 	} else {
-		i18n.Init2(language.AmericanEnglish)
+		i18n.Init(language.AmericanEnglish)
 	}
 	i18n.Printf("hi, customer. %d apple or %d apples?", 1, 2)
 }
