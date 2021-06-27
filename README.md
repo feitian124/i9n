@@ -17,6 +17,16 @@ i9n is an easy and powerful golang module make your i18n work twice faster, name
 hi, customer. 1 apple or 2 apples?
 ```
 
+## todo
+go has built in support for i18n at https://github.com/golang/text.git,
+the baisc idea is:
+1. extract strings need to be translated in source code
+2. generate resources and translate them by someone
+3. load these resource
+4. manually rewrite or use `gotext rewrite` to replace `fmt.Print` with `message.Printer`
+
+see `gotext` branch, which works after build but has issue when run `go run main.go` directly
+
 ## thanks
 
 - <https://xuanwo.io/2019/12/11/golang-i18n/>
