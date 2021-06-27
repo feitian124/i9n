@@ -1,11 +1,10 @@
 {
-    "language": "en",
+    "language": "zh",
     "messages": [
         {
             "id": "Hello, {World}",
             "message": "Hello, {World}",
-            "translation": "Hello, {World}",
-            "translatorComment": "Copied from source.",
+            "translation": "你好, {World}",
             "placeholders": [
                 {
                     "id": "World",
@@ -15,8 +14,7 @@
                     "argNum": 1,
                     "expr": "\"world\""
                 }
-            ],
-            "fuzzy": true
+            ]
         }
     ]
 }

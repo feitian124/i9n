@@ -27,8 +27,8 @@ func (d *dictionary) Lookup(key string) (data string, ok bool) {
 
 func init() {
 	dict := map[string]catalog.Dictionary{
-		"el": &dictionary{index: elIndex, data: elData},
 		"en": &dictionary{index: enIndex, data: enData},
+		"zh": &dictionary{index: zhIndex, data: zhData},
 	}
 	fallback := language.MustParse("en")
 	cat, err := catalog.NewFromMap(dict, catalog.Fallback(fallback))
@@ -39,19 +39,19 @@ func init() {
 }
 
 var messageKeyToIndex = map[string]int{
-	"Hello world!": 0,
+	"Hello, %s": 0,
 }
-
-var elIndex = []uint32{ // 2 elements
-	0x00000000, 0x0000001a,
-} // Size: 32 bytes
-
-const elData string = "\x02Γιά σου Κόσμε!"
 
 var enIndex = []uint32{ // 2 elements
 	0x00000000, 0x0000000d,
 } // Size: 32 bytes
 
-const enData string = "\x02Hello world!"
+const enData string = "\x02Hello, %[1]s"
 
-// Total table size 103 bytes (0KiB); checksum: D8481C97
+var zhIndex = []uint32{ // 2 elements
+	0x00000000, 0x0000000e,
+} // Size: 32 bytes
+
+const zhData string = "\x02你好, %[1]s"
+
+// Total table size 91 bytes (0KiB); checksum: ACD52B52
