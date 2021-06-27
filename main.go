@@ -12,14 +12,13 @@ import (
 func main() {
 	p(language.English)
 
-	fmt.Println()
-
 	p(language.Chinese)
-
 }
 
 func p(t language.Tag) {
 	p := message.NewPrinter(t)
 	p.Printf("Hello, %s", "world")
-	p.Println()
+	fmt.Println()
+	p.Printf("I want %d apple", 1)
+	fmt.Println()
 }

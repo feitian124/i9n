@@ -17,6 +17,23 @@
                 }
             ],
             "fuzzy": true
+        },
+        {
+            "id": "I want {1} apple",
+            "message": "I want {1} apple",
+            "translation": "I want {1} apple",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "1",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "1"
+                }
+            ],
+            "fuzzy": true
         }
     ]
 }

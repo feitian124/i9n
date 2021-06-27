@@ -39,19 +39,20 @@ func init() {
 }
 
 var messageKeyToIndex = map[string]int{
-	"Hello, %s": 0,
+	"Hello, %s":       0,
+	"I want %d apple": 1,
 }
 
-var enIndex = []uint32{ // 2 elements
-	0x00000000, 0x0000000d,
-} // Size: 32 bytes
+var enIndex = []uint32{ // 3 elements
+	0x00000000, 0x0000000d, 0x00000020,
+} // Size: 36 bytes
 
-const enData string = "\x02Hello, %[1]s"
+const enData string = "\x02Hello, %[1]s\x02I want %[1]d apple"
 
-var zhIndex = []uint32{ // 2 elements
-	0x00000000, 0x0000000e,
-} // Size: 32 bytes
+var zhIndex = []uint32{ // 3 elements
+	0x00000000, 0x0000000e, 0x00000028,
+} // Size: 36 bytes
 
-const zhData string = "\x02你好, %[1]s"
+const zhData string = "\x02你好, %[1]s\x02我想要 %[1]d 个苹果"
 
-// Total table size 91 bytes (0KiB); checksum: ACD52B52
+// Total table size 144 bytes (0KiB); checksum: D67C2D39

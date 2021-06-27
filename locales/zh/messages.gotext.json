@@ -15,6 +15,21 @@
                     "expr": "\"world\""
                 }
             ]
+        },
+        {
+            "id": "I want {1} apple",
+            "message": "I want {1} apple",
+            "translation": "我想要 {1} 个苹果",
+            "placeholders": [
+                {
+                    "id": "1",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "1"
+                }
+            ]
         }
     ]
 }
